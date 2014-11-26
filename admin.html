@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+<title>Learning jQuery</title>
+<meta charset="utf-8" />
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script type="text/javascript" src="jquery.min.js"></script>
+</head>
+<body>
+
+<style>
+	#wrapper{
+	margin-left:590px;
+	}
+
+	input{
+	margin-top:20px;
+	}
+
+	select{
+	margin-top:20px;
+	}
+
+
+	#submitButton {
+	height:50px;
+	margin-left:20px;
+	width:100px;
+	background-color:#00BFFF;
+	color:black;
+	border: 2px gray;
+	}
+
+</style>
+
+<form id="wrapper">
+	<input type="text" name="username" placeholder="usuario"/>
+	<br/>
+	<input type="password" name="email" placeholder="email"/>
+	<br/>
+	<input type="text" name="nombre" placeholder="nombre"/>
+	<br/>
+	<input type="text" name="nombre" placeholder="nombre"/>
+	<br/>
+	<input type="checkbox" name="esJEfe" value="esJefe">Es Jefe 
+	<br/>
+	<select>
+		<option value="dept1">Departamento 1</option>
+		<option value="dept2">Departamento 2</option>
+		<option value="dept3">Departamento 3</option>
+	</select>
+	
+	<br/>
+	
+	<input id="submitButton" type="submit" value="Crear Usuario" />
+	
+</form>
+
+<script>
+
+	$("#submitButton").mouseenter(function(){
+		$(this).animate({
+					height:"70px"
+					},200);
+	});
+
+	$("#submitButton").mouseleave(function(){
+		$(this).animate({
+					height:"60px"
+					},200);
+	});
+
+</script>
+
+</body>
+</html>
