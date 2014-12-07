@@ -1,135 +1,125 @@
+
 <!doctype html>
 <html>
-	<head>
-		<title>Login-Control de Asistencia</title>
-		<meta charset="utf-8" />
-		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<script type="text/javascript" src="jquery.min.js"></script>
-
-		<!-- Bootstrap -->
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<!-- HTML5 Shim and Respond.js IE8 support of HTML5
-		elements and media queries -->
-		<!-- WARNING: Respond.js doesn't work if you view the
-		page via file:// -->
-		<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/libs/html5shiv/
-		3.7.0/html5shiv.js"></script>
-		<script src="https://oss.maxcdn.com/libs/respond.js/
-		1.4.2/respond.min.js"></script>
-		<![endif]-->
-
+<head>
+<title>Control de Asistencia</title>
+<meta charset="utf-8" />
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script type="text/javascript" src="jquery.min.js"></script>
 </head>
 <body>
-	<style>
-		#background{
-		margin-top:15%;
-		background-color:white;
-		}
-		
-		#background2{
-		margin-top:18%;
-		background-color:white;
-		}
-			
-		#submitButton {
-		height:50px;
-		width:30%;
-		}
-	
-		#error {
-		color:red;
-		margin:20%;
-		}
-		
-		.jumboHeight{
-		height:655px;
-		}
-	
-	</style>
-	
+<style>
+#background{
+background-color:white;
+}
+#wrapper {
+width:600px;
+height:490px;
+margin:0 auto;
+font-family: helvetica;
+font-size:1.2em;
+margin-top:50px;
+background-color:#E6E6E6;
+border-style:outset;
+border-color:gray;
+}
+.header{
+color:gray;
+margin-left:460px;
+margin-top:40px;
+}
+.header2{
+color:gray;
+margin-left:560px;
+margin-top:20px;
+}
+input {
+width:350px;
+height:32px;
+padding:5px;
+border-radius:10px;
+font-size:1.5em;
+border: 2px solid blue;
+margin-top:10px;
+margin-bottom:10px;
+border-style:outset;
+color:gray;
+margin-left:110px;
+}
+#submitButton {
+height:50px;
+margin-left:230px;
+width:100px;
+background-color:#00BFFF;
+color:black;
+border: 2px gray;
+}
+#error {
+color:red;
+margin:20px;
+}
+img{
+width:120px;
+height:120px;
+border-radius:25px;
+margin-left:230px;
+margin-top:40px;
+}
+</style>
 </head>
-	<body>
-	<div class="container horizontal">
-		<div id="background" class="jumbotron col-lg-6">
-			<h1>Control de Asistencia</h1>
-			<p>Ingrese sus credenciales</p>
-		</div>
-		
-		
-		<div id="background2" class="jumbotron inline col-lg-6">
-		
-			<form id="validationForm" action="hola.php" method="post">
-				<div class="input-group">
-					<input class="form-control" name="user" id="user" placeholder="Username"/>
-				</div>
-			</br>
-				<div class="input-group">
-					<input class="form-control" name="pass" type="password" id="pass" placeholder="Password"/>
-				</div>
-			</br>
-			</br>
-				<input class="btn btn-success btn-lg" id="submitButton" type="submit" value="Submit" onclick="parent.location"="principal.html"/>
-		</form>
-		</div>
-		
-	</div>
-	
-	<div id="error"></div>
+<body id="background">
+<h1 class="header">Sistema de Control de Asistencia</h1>
+<h2 class="header2">Ingrese sus credenciales</h2>
+<div id="wrapper">
+<div id="error"></div>
     
-	</div>
-	
+
+    <form id="validationForm" action="hola.php" method="post">
+        <img src="./images/person.jpg"></img>
+        <input name="user" id="user" placeholder="Username"/>
+        <input name="pass" type="password" id="pass" placeholder="Password"/>
+        <input id="submitButton" type="submit" value="Submit" onclick="parent.location"="principal.html"/>
+    </form>
+</div>
 <script>
-	document.getElementById("user").value="";
-	document.getElementById("pass").value="";
-	$("#validationForm").submit(function(event) {
-		var errorMessage="";
-		event.preventDefault();
-		function isValidEmailAddress(emailAddress) {
-			var pattern = new RegExp(/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i);
-			return pattern.test(emailAddress);
-		};
-	
-		if (document.getElementById("user").value=="") {
-		errorMessage=errorMessage+"<br /> Campo Usuario no puede estar vacío";
-		}
-	
-		if(document.getElementById("pass").value==""){
-		errorMessage=errorMessage+"<br /> Campo Password no puede estar vacío";
-		}
-	
-		if (errorMessage=="") {
-			window.open("admin.html");
-			document.getElementById("user").value="";
-			document.getElementById("pass").value="";
-			errorMessage="";
-			$("#error").html(errorMessage);
-		} else {
-			$("#error").html(errorMessage);
-		}
-	});
-	
-	$("#submitButton").mouseenter(function(){
-		$(this).animate({
-		width:"40%",
-		},100);
-	});
-	
-	$("#submitButton").mouseleave(function(){
-		$(this).animate({
-		width:"30%",
-		},100);
-	});
-	
+document.getElementById("user").value="";
+document.getElementById("pass").value="";
+$("#validationForm").submit(function(event) {
+var errorMessage="";
+event.preventDefault();
+function isValidEmailAddress(emailAddress) {
+var pattern = new RegExp(/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i);
+return pattern.test(emailAddress);
+};
+if (document.getElementById("user").value=="") {
+errorMessage=errorMessage+"<br /> Campo Usuario no puede estar vacío";
+}
+if(document.getElementById("pass").value==""){
+errorMessage=errorMessage+"<br /> Campo Password no puede estar vacío";
+}
+if (errorMessage=="") {
+window.open("admin.html");
+document.getElementById("user").value="";
+document.getElementById("pass").value="";
+errorMessage="";
+$("#error").html(errorMessage);
+} else {
+$("#error").html(errorMessage);
+}
+});
+$("#submitButton").mouseenter(function(){
+$(this).animate({
+width:"140px",
+height:"60px"
+},200);
+});
+$("#submitButton").mouseleave(function(){
+$(this).animate({
+width:"100px",
+height:"50px"
+},200);
+});
 </script>
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/
-jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files
-as needed -->
-<script src="js/bootstrap.min.js"></script>
-
 </body>
 </html>
