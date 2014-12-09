@@ -68,7 +68,7 @@
 	</br></br></br>
 
 	
-	
+
 	<div class="horizontal">
 		<div id="fechaDiv" class="container jumbotron">
 			<h1>Por fecha</h1>
@@ -80,12 +80,12 @@
 				</div>
 			
 				<div class="form-group">
-					<input class="form-control"type="radio" name="dateSort" value="descendente"/><h3>Orden descendente</h3>
+					<input id ="desc" class="form-control"type="radio" name="dateSort" value="descendente"/><h3>Orden descendente</h3>
 				</div>			
 		
 				</br></br>
 		
-				<button type="submit" class="btn btn-lg btn-success">
+				<button id="generar" type="button" class="btn btn-lg btn-success">
 					<span>Generar Reporte</span>
 				</button>
 		
@@ -106,11 +106,11 @@
 					<input class="form-control"type="radio" name="checkType" value="salida"/><h3>Por Salidas</h3>
 				</div>			
 		
-				<button type="submit" class="btn btn-lg btn-success">
+				<button id = "generars"type="button" class="btn btn-lg btn-success">
 					<span>Generar Reporte</span>
 				</button>
 		
-			<form>
+			</form>
 		
 		</div>
 			
@@ -118,15 +118,15 @@
 		<div id="empleadoDiv" class="jumbotron container">
 			<h1>Por Empleado</h1>
 			
-		<form>
+		<form id="validationForm" action="generarempleados.php" method="post">
 			<div class="input-group">
-				<input type="text" class="form-control" name="nombreEmpleado" placeholder="Usuario"></input>
+				<input id = "USER"type="text" class="form-control" name="USER" placeholder="Usuario"></input>
 			</div>
 			
 			</br></br>
 			
 			
-			<button type="submit" class="btn btn-lg btn-success">
+			<button id="generare"type="submit" class="btn btn-lg btn-success">
 					<span>Generar Reporte</span>
 			</button>
 		
@@ -145,7 +145,39 @@
 		$("#fechaDiv").show();
 		$("#tipoDiv").hide();
 		$("#empleadoDiv").hide();
-		
+		$("#generar").click(function(){
+			if($('#ascen').is(':checked')) {
+			 	window.location.replace("SelectAscen.php");
+			}else{
+				window.location.replace("SelectDesc.php");
+			}
+			
+				
+			
+		});
+		$("#generars").click(function(){
+			if($('#entradas').is(':checked')) {
+			 	window.location.replace("reporteentrada.php");
+			}else{
+				window.location.replace("reportesalida.php");
+			}
+			
+				
+			
+		});
+		$("#generare").click(function(){
+					
+			var url="validar.php";
+			$.ajax({type:"POST", url:url,data: $("#empli").serialize(),
+            success: function(data)
+            {
+                $("#resultado").html(data);
+            }
+         	});
+			window.location.replace("generarempleados.php");
+				
+			
+		});
 		$("#fecha").click(function(){
 			$("#fechaDiv").show();
 			$("#tipoDiv").hide();
@@ -169,7 +201,7 @@
 		});
 		
 	</script>
-
+	
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/
 	jquery.min.js"></script>
