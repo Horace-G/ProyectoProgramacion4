@@ -114,7 +114,9 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 //echo "Connected successfully";
-$sql="SELECT * FROM Usuarios U join Asistencia asi on asi.idUsuarios =U.idUsuarios ORDER BY asi.Time DESC";
+session_start();
+$id=$_SESSION["DEPT"];
+$sql="SELECT * FROM Usuarios U join Asistencia asi on asi.idUsuarios =U.idUsuarios where U.IdDept=$id ORDER BY asi.Time DESC ";
 if($result = mysqli_query($conn,$sql)){
 	?>
         <a id="but" class="btn btn-default" type ="button" href="reportesJefe.php"><img src="back.png" alt="HTML tutorial" style="width:100px;height:100px;border:0"></a>
