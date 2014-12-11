@@ -98,7 +98,7 @@ tr:first-child td:last-child{
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "prgora4";
+$password = "progra4";
 $db= "ControlCA";
 $usuario=$_POST["USER"];
 $contra=$_POST["pass"];
@@ -116,7 +116,9 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 //echo "Connected successfully";
-$sql="SELECT * FROM Usuarios U join Asistencia a on a.idUsuarios =U.idUsuarios WHERE UserName='$usuario'";
+session_start();
+$id=$_SESSION["DEPT"];
+$sql="SELECT * FROM Usuarios U join Asistencia a on a.idUsuarios =U.idUsuarios WHERE UserName='$usuario' and U.IdDept=$id";
 if($result = mysqli_query($conn,$sql)){
 	?>
         <a id="but" class="btn btn-default" type ="button" href="reportesJefe.php"><img src="back.png" alt="HTML tutorial" style="width:100px;height:100px;border:0"></a>

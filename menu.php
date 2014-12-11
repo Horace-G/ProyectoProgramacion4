@@ -1,7 +1,5 @@
 <!doctype html>
-<?php
-session_start();
-?>
+
 <html>
 <head>
 	<title>Menú Principal</title>
@@ -10,6 +8,7 @@ session_start();
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript" src="js/date.js"></script>
 
 	<!-- Bootstrap -->
 	<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -23,7 +22,32 @@ session_start();
 		<script src="https://oss.maxcdn.com/libs/respond.js/
 		1.4.2/respond.min.js"></script>
 		<![endif]-->
+	<?php
+	session_start();
 
+	$hi=$_SESSION['TIME'];
+	$hi2=$_SESSION['TIME2'];
+	$hi3=$_SESSION['ESJEFE'];
+	if($hi==""){
+	echo "<h2>hola</h2>";
+	}
+	echo "<script>var tiempodia='$hi';var tiempodia2='$hi2'; var jefe='$hi3'; </script>";
+	?>
+	<script>
+		
+		//alert(Date.today().getDayName());
+		//alert(Date.parse(tiempodia).getDayName());
+		var day1=Date.today().getDayName();
+		alert(day1);
+		if(Date.parse(tiempodia).getDayName()==Date.today().getDayName()){
+			$("#btnAsistencia").attr('disabled', 'disabled');
+			
+		}
+		if(Date.parse(tiempodia2).getDayName()==Date.today().getDayName()){
+			$("#btnSalida").attr('disabled', 'disabled');
+			
+		}
+	</script>
 	</head>
 
 	<script>
@@ -33,17 +57,22 @@ session_start();
 
 	<style>
 	body{
-background: #34495e;
+background: #3A75CC;
 	}
 	#hi{
-background: #9b59b6;	
+background: #FF9C49;	
 	}
 	.menu{
+		width: 500px;
+		height: 500px;
 		margin-top:100px;
 	}
 	
 	.alertFont{
 		font-size:1.5em;
+	}
+	#btnSalida{
+		background: #8462B2;
 	}
 	
 	</style>
@@ -104,7 +133,9 @@ background: #9b59b6;
 </br>
 <form id="marcar"></form>
 <script>
-
+if(jefe==0){
+	$("#btnReportes").hide();
+}
 $("#successAlert").hide();
 $("#warningAlert").hide();
 
@@ -114,6 +145,24 @@ $("#btnReportes").click(function(){
 
 	<!--Si no es jefe, entonces generar el php de un solo-->
 });
+if(tiempodia==""){
+
+}else{
+if(Date.parse(tiempodia).getDayName()==Date.today().getDayName()){
+			$("#btnAsistencia").attr('disabled', 'disabled');
+			
+		}
+	}
+if(tiempodia2==""){
+
+}else{	
+	
+			if(Date.parse(tiempodia2).getDayName()==Date.today().getDayName()){
+				$("#btnSalida").attr('disabled', 'disabled');
+				
+			}
+		}
+		
 
 $("#btnAsistencia").click(function(){
 	<!--Ingresar codigo para conectar a base de datos y asignar asistencia al empleado aqui-->

@@ -17,7 +17,8 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 //echo "Connected successfully";
-
+$sql ="select * from Usuarios u Join Asistencia a on u.idUsuarios=a.idUsuarios where a.EnSal='E' and u.Username='$usuario' order By a.Time Desc limit 1";
+$sql2 ="select * from Usuarios u Join Asistencia a on u.idUsuarios=a.idUsuarios where a.EnSal='S' and u.Username='$usuario' order By a.Time Desc limit 1";
 if($result = mysqli_query($conn, "SELECT * FROM Usuarios WHERE Username = '$usuario'")){
     
         $row=mysqli_fetch_assoc($result);
@@ -31,7 +32,23 @@ if($result = mysqli_query($conn, "SELECT * FROM Usuarios WHERE Username = '$usua
                 session_start();
                 $_SESSION['IDUSER']=$row["idUsuarios"];
                 $_SESSION['ESJEFE']=$row["EsJefe"];
-                 $_SESSION['ENSAL']=$row["EnSal"];
+                $_SESSION['ENSAL']=$row["EnSal"];
+                $_SESSION['DEPT']=$row["IdDept"];
+                echo $_SESSION['DEPT'];
+                 if($result1 = mysqli_query($conn, $sql)){
+                    $rpp=mysqli_fetch_assoc($result1);
+                    $_SESSION['TIME']=$rpp["Time"];
+                     echo $_SESSION['TIME'];
+                }else{
+                    echo "vamos mal";
+                }
+                if($result2 = mysqli_query($conn, $sql2)){
+                    $rpp2=mysqli_fetch_assoc($result2);
+                    $_SESSION['TIME2']=$rpp2["Time"];
+                     echo $_SESSION['TIME2'];
+                }else{
+                    echo "vamos mal";
+                }
             	header('Location: menu.php');
                 
                 

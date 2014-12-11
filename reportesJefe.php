@@ -30,12 +30,41 @@
 	.jumbotron{
 		background-color:white;
 	}
+	#hs{
+		background: #39A0E8;
+		
+		margin: auto;
+		
+	}
+	#fechaDiv{
+		background: #39A0E8;
+		width: 400px;
+	}
+	#tipoDiv{
+		background: #39A0E8;
+		width: 400px;
+	}
+	#empleadoDiv
+	{
+		background: #39A0E8;
+		width: 400px;
+	}
+	body{
+		background: #02CDFF;
+	}
+	#hi{
+
+		background: #02CDFF;
+	}
+	#btnVolver{
+		margin: right;
+	}
 	
 </style>
 
 <body>
 
-	<div class="navbar navbar-default navbar-fixed-top">
+	<div class="navbar navbar-default navbar-fixed-top" id ="hi">
 		<div class="container horizontal">
 			<div class="navbar-header">
 				<a href="" class="navbar-brand">Generar Reporte ...</a>
@@ -69,7 +98,7 @@
 
 	
 
-	<div class="horizontal">
+	<div class="horizontal" id="hs">
 		<div id="fechaDiv" class="container jumbotron">
 			<h1>Por fecha</h1>
 			
@@ -197,7 +226,7 @@
 		});
 		
 		$("#btnVolver").click(function(){
-			window.open("menu.html");
+			window.open("menu.php");
 		});
 		
 	</script>
